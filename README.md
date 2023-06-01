@@ -2,6 +2,8 @@
 
 ## Architecture
 
+![WhatsApp Image 2023-06-01 at 3 24 41 PM](https://github.com/arshPratap/ROS2_DDS_Service_Demo/assets/62841337/cf2c1b9d-c5f3-43f9-b81c-432f1d9b46c2)
+
 ## Prerequisites
 - Install [ROS-2 Humble](https://docs.ros.org/en/humble/Installation.html)
 - Install [Micro-XRCE-Agent](https://micro-xrce-dds.docs.eprosima.com/en/latest/installation.html#installing-the-agent-standalone)
