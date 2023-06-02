@@ -1,12 +1,3 @@
-cmake_minimum_required(VERSION 3.20)
-project(ros2_server_demo)
-
-# --------------------------------------------------------------------------- #
-# Dependencies.
-
-find_package(microcdr)
-find_package(microxrcedds_client)
-
 # --------------------------------------------------------------------------- #
 # Build.
 
