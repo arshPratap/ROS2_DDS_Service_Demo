@@ -1,0 +1,52 @@
+types:
+    idls:
+        - >
+            struct GM_Goal
+            {
+                long order;
+            };
+
+            struct GM_Result
+            {
+                long result;
+            };
+
+            struct GM_Feedback
+            {
+                long current;
+            };
+systems:
+    dds: { type: fastdds }
+    ros2: { type: ros2 }
+
+routes:
+    dds_to_ros2: { from: dds, to: ros2 }
+    dds_server:
+        server: dds
+        clients: ros2
+
+topics:
+    feedback_ros2: {
+        type: "ap_custom_services/GM:feedback",
+        route: dds_to_ros2,
+        remap: {
+            dds: { type: GM_Feedback, topic: GM_FeedbackTopic },
+            ros2: { topic: GM_Feedback }
+        }
+    }
+
+services:
+    arm_motors: {
+        request_type: GM_Goal,
+        reply_type: GM_Result,
+        route: dds_server,
+        remap: {
+            dds: {
+                topic: GM_GoalService,
+            },
+            ros2: {
+                request_type: "ap_custom_services/GM:goal",
+                reply_type: "ap_custom_services/GM:result"
+            }
+        }
+    }
